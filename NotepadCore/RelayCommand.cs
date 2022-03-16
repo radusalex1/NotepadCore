@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace NotepadCore
@@ -12,6 +9,7 @@ namespace NotepadCore
 
         readonly Action _execute;
         readonly Func<bool> _canExecute;
+        private Action<object, RoutedEventArgs> btnDelete_Click;
 
         public RelayCommand(Action execute, Func<bool> canExecute)
         {
@@ -26,6 +24,11 @@ namespace NotepadCore
         public RelayCommand(Action execute):this(execute,null)
         {
 
+        }
+
+        public RelayCommand(Action<object, RoutedEventArgs> btnDelete_Click)
+        {
+            this.btnDelete_Click = btnDelete_Click;
         }
 
         public event EventHandler CanExecuteChanged

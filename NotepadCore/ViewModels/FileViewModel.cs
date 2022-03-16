@@ -29,7 +29,7 @@ namespace NotepadCore.ViewModels
         {
             Document = document;
             NewCommand = new RelayCommand(NewFile);
-            SaveCommand = new RelayCommand(SaveFile);
+            SaveCommand = new RelayCommand(SaveFile, () => !Document.isEmpty);
             SaveAsCommand = new RelayCommand(SaveFileAs);
             OpenCommand = new RelayCommand(OpenFile);
 
@@ -48,7 +48,11 @@ namespace NotepadCore.ViewModels
             {
                 SaveFileAs();
             }
-            File.WriteAllText(Document.FilePath, Document.Text);
+            else
+            {
+                File.WriteAllText(Document.FilePath, Document.Text);
+
+            }
         }
 
         public void SaveFileAs()
@@ -65,6 +69,7 @@ namespace NotepadCore.ViewModels
         private void OpenFile()
         {
             var openFileDialog = new OpenFileDialog();
+
             if (openFileDialog.ShowDialog() == true)
             {
                 Document.Text= File.ReadAllText(openFileDialog.FileName);

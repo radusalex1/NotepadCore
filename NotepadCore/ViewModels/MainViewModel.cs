@@ -1,9 +1,4 @@
 ﻿using NotepadCore.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NotepadCore.ViewModels
 {
@@ -28,6 +23,7 @@ namespace NotepadCore.ViewModels
         /// Manage help dialog.
         /// </summary>
         public HelpViewModel Help { get; set; }
+
 
         /// <summary>
         /// Constructor.
